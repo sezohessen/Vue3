@@ -10,7 +10,7 @@
     <div id="app">
         <p>Hello : {{ title }}</p>
         <p>Age : {{ age }}</p>
-        <div v:show="ok">Age is greater than 11 Now</div><!-- Using CSS by  Display -->
+        <div v-show="age>15">Age is greater than 11 Now</div><!-- Using CSS by  Display -->
         <div v-if="age<=11"><!-- Removing it if it's false -->
             <button v-on:click="age++">Increas Age</button>
         </div>
