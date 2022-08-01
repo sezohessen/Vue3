@@ -14,6 +14,21 @@
             margin: 20px;
             text-align: center;
         }
+        .books li img{
+            height: 100px;
+            width: 100px;
+        }
+        .books li{
+            display: inline-block;
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .books li.fav{
+            border-color: rgb(255, 91, 91);
+        }
     </style>
     <script src="https://unpkg.com/vue@3.0.2"></script>
 </head>
@@ -30,14 +45,27 @@
         <button @click="changeTitle">Change Name</button>
         <button @click="title = 'hussien'">Change Fixed Name</button>
         <hr>
-        <div v-if="ShowBooks">
+        <div v-if="ShowBooks" class="books">
             <ul>
                 <!-- For Loop -->
-                <li v-for="book in books">
+                <li v-for="(book,index) in books" :class="{fav:book.isFav}"  @click="ToggleFav(index)">
+                    <img :src="path+book.img" :alt="book.title"><!-- Attribute binding -->
                     <h3>Name : {{ book.title }}</h3>
                     <p>Author: {{ book.author }}</p>
                 </li>
             </ul>
+            <hr>
+            <div class="favBooks" v-if="favBooks.length>0">
+                <h3>Fav Books {{ favBooks.length }}</h3>
+                <ul>
+                    <!-- For Loop -->
+                    <li v-for="book in favBooks" :class="{fav:book.isFav}"  @click="ToggleFavVersion2(book)">
+                        <img :src="path+book.img" :alt="book.title"><!-- Attribute binding -->
+                        <h3>Name : {{ book.title }}</h3>
+                        <p>Author: {{ book.author }}</p>
+                    </li>
+                </ul>
+            </div>
         </div>
         <button v-if="!ShowBooks" @click="ToggleBooks">Show Books</button>
         <button v-else @click="ToggleBooks">Hide Books</button>
@@ -48,6 +76,11 @@
             <div class="box" @dblclick="handleEvent">Double click</div>
             <div class="box" @mousemove="handleMouseMove">Mouse Move to position ({{ x }},{{ y }})</div>
         </div>
+        <hr>
+        <!-- Attribute binding -->
+        <h3><a v-bind:href="faceURL" target="target">facebook</a></h3>
+        <h3><a :href="twitterURL" target="target">twitter</a></h3>
+        <hr>
     </div>
     <script src="app.js"></script>
 </body>
