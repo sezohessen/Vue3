@@ -5,12 +5,16 @@ const app = Vue.createApp({
         return {
             title:'Sezo',
             ok:false,
-            age:1
+            age:1,
+            ShowBooks:false
         }
     },
     methods: {
         changeTitle(){
             this.title = 'Ahmed'
+        },
+        ToggleBooks(){
+            this.ShowBooks = !this.ShowBooks;
         }
     },
 })

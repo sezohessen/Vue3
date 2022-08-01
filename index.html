@@ -10,12 +10,25 @@
     <div id="app">
         <p>Hello : {{ title }}</p>
         <p>Age : {{ age }}</p>
+        <hr>
         <div v-show="age>15">Age is greater than 11 Now</div><!-- Using CSS by  Display -->
         <div v-if="age<=11"><!-- Removing it if it's false -->
             <button v-on:click="age++">Increas Age</button>
         </div>
         <button @click="age--">Decrease Age</button>
         <button @click="changeTitle">Change Name</button>
+        <button @click="title = 'hussien'">Change Fixed Name</button>
+        <hr>
+        <div v-if="ShowBooks">
+            <ul>
+                <li>Mohamed Ali</li>
+                <li>Mo Salah</li>
+                <li>Art Of War</li>
+                <li>Elkemyia</li>
+            </ul>
+        </div>
+        <button v-if="!ShowBooks" @click="ToggleBooks">Show Books</button>
+        <button v-else @click="ToggleBooks">Hide Books</button>
     </div>
     <script src="app.js"></script>
 </body>
