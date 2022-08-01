@@ -4,6 +4,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn Vue</title>
+    <style>
+        .box{
+            padding: 100px 0;
+            background-color: #ccc;
+            width: 400px;
+           /*  height: 200px; */
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+        }
+    </style>
     <script src="https://unpkg.com/vue@3.0.2"></script>
 </head>
 <body>
@@ -21,14 +32,22 @@
         <hr>
         <div v-if="ShowBooks">
             <ul>
-                <li>Mohamed Ali</li>
-                <li>Mo Salah</li>
-                <li>Art Of War</li>
-                <li>Elkemyia</li>
+                <!-- For Loop -->
+                <li v-for="book in books">
+                    <h3>Name : {{ book.title }}</h3>
+                    <p>Author: {{ book.author }}</p>
+                </li>
             </ul>
         </div>
         <button v-if="!ShowBooks" @click="ToggleBooks">Show Books</button>
         <button v-else @click="ToggleBooks">Hide Books</button>
+        <!-- Mouse Events -->
+        <div>
+            <div class="box" @mouseover="handleEvent($event,5)" >Mouseover (enter)</div>
+            <div class="box" @mouseleave="handleEvent">Mouseleaver</div>
+            <div class="box" @dblclick="handleEvent">Double click</div>
+            <div class="box" @mousemove="handleMouseMove">Mouse Move to position ({{ x }},{{ y }})</div>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
